@@ -1,0 +1,13 @@
+{% extends 'news/base.html' %}
+
+{% block title %}Validate Email{% endblock %}
+
+{% block content %}
+<script>
+  window.setTimeout(function(){
+    window.location.href = "/";
+  }, 5000);
+</script>
+  <h2>Email validate failed</h2>
+  <p>Sorry this is an invalid activation link, the page will jump to the home page in 5 seconds</p>
+{% endblock %}

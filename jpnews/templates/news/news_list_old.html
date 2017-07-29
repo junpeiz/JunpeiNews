@@ -1,0 +1,61 @@
+{% extends 'news/base.html' %}
+{% load staticfiles%}
+
+{% block content %}
+
+    <div class="row">
+
+        <!-- Gallery Items
+        ================================================== --> 
+        <div class="span12 gallery">
+
+            <ul id="filterOptions" class="gallery-cats clearfix">
+                <li class="active"><a href="#" class="all">All</a></li> 
+                <li><a href="#" class="finance">财经</a></li>
+                <li><a href="#" class="tech">科技</a></li>
+                <li><a href="#" class="news">要闻</a></li>
+                <li><a href="#" class="sports">体育</a></li>
+                <li><a href="#" class="edu">教育</a></li>
+            </ul>
+
+            <div class="row clearfix">
+                <ul class="gallery-post-grid holder">
+
+                {% for news_ in news %}
+                    {% if news_.pic != "" %}
+                    <li  class="span3 gallery-item" data-id="{{ forloop.counter }}" data-type="{{ news_.category }}">
+                        <span class="gallery-hover-4col hidden-phone hidden-tablet">
+                            <span class="gallery-icons">
+                                <a href="{{ news_.pic }}" class="item-zoom-link lightbox" title="{{ news_.title }}" data-rel="prettyPhoto"></a>
+                                <a target="_blank" href="{% url 'record_history' %}/?next={{news_.weburl}}" class="item-details-link"></a>                
+                                <!-- <a target="_blank" href="{{ news_.weburl }}" class="item-details-link"></a> -->
+                            </span>
+                        </span>
+                        <!-- The image of the news -->
+                        <a target="_blank" href="{{ news_.weburl }}"><img src="{{ news_.pic|default:'http://api.jisuapi.com/news/upload/20170415/100002_82818.jpg' }}" alt="Gallery"></a>
+                        <span class="project-details"><a target="_blank" href="{{ news_.weburl }}">{{ news_.title }}</a>{{ news_.src }}</span>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+
+                </ul>
+            </div>
+
+            <!-- Pagination -->
+            <!-- <div class="pagination">
+                <ul>
+                <li class="active"><a href="#">Prev</a></li>
+                <li class="active"><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">Next</a></li>
+                </ul>
+            </div> -->
+
+        </div><!-- End gallery list-->
+
+    </div><!-- End container row -->
+    
+    </div> <!-- End Container -->
+{% endblock %}

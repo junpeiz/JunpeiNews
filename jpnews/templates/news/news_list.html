@@ -1,0 +1,184 @@
+{% extends 'news/base.html' %}
+{% load staticfiles%}
+
+{% block content %}
+
+  <section id="mainContent">
+    <div class="content_top">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm6">
+          <div class="latest_slider">
+            <div class="slick_slider">
+            {% for news_ in news_1_1 %}
+              <div class="single_iteam"><img src="{{ news_.pic }}" width="446" height="360" alt="">
+                <h2><a class="slider_tittle" target="_blank" href="{% url 'record_history' %}/?next={{news_.weburl}}">{{ news_.title }}</a></h2>
+              </div>
+            {% endfor %}
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm6">
+          <div class="content_top_right">
+            <ul class="featured_nav wow fadeInDown">
+            {% for news_ in news_1_2 %}
+              <li><img src="{{ news_.pic }}" alt="">
+                <div class="title_caption"><a target="_blank" href="{% url 'record_history' %}/?next={{news_.weburl}}">{{ news_.title }}</a></div>
+              </li>
+            {% endfor %}  
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content_middle">
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="content_middle_leftbar">
+          <div class="single_category wow fadeInDown">
+            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a href="#" class="title_text">{{channel_list.1}}</a> </h2>
+            <ul class="catg1_nav">
+            {% for news_ in news_2_1|slice:":2" %}
+              <li>
+                <div class="catgimg_container"> <a href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank" class="catg1_img"><img alt="" src="{{ news_.pic }}"></a></div>
+                <h3 class="post_titile"><a href="{% url 'record_history' %}/?next={{news_.weburl}}">{{ news_.title }}</a></h3>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6">
+        <div class="content_middle_middle">
+          <div class="slick_slider2">
+            {% for news_ in news_2_2 %}
+            <div class="single_featured_slide"> <a href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank"><img src="{{ news_.pic }}" width="446" height="330" alt=""></a>
+              <h2><a href="{% url 'record_history' %}/?next={{news_.weburl}}">{{ news_.title }}</a></h2>
+              <p>{{ news_.src }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3">
+        <div class="content_middle_rightbar">
+          <div class="single_category wow fadeInDown">
+            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a href="#" class="title_text">{{channel_list.1}}</a> </h2>
+            <ul class="catg1_nav">
+            {% for news_ in news_2_1|slice:"2:4" %}
+              <li>
+                <div class="catgimg_container"> <a href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank" class="catg1_img"><img alt="" src="{{ news_.pic }}"></a></div>
+                <h3 class="post_titile"><a href="{% url 'record_history' %}/?next={{news_.weburl}}">{{ news_.title }}</a></h3>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content_bottom">
+      <div class="col-lg-8 col-md-8">
+        <div class="content_bottom_left">
+          <div class="single_category wow fadeInDown">
+            <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">{{channel_list.2}}</a> </h2>
+            <div class="business_category_left wow fadeInDown">
+              <ul class="fashion_catgnav">
+              {% for news_ in news_3_1|slice:":1" %}
+                <li>
+                  <div class="catgimg2_container"> <a href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank"><img alt="" src="{{ news_.pic }}"></a> </div>
+                  <h2 class="catg_titile"><a href="{% url 'record_history' %}/?next={{news_.weburl}}">{{ news_.title }}</a></h2>
+                  <div class="comments_box"> <span class="meta_date">{{ news_.time }}</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="{% url 'record_history' %}/?next={{news_.weburl}}">Read More...</a></span> </div>
+                  <p>{{ news_.src }}</p>
+                </li>
+              {% endfor %}
+              </ul>
+            </div>
+            <div class="business_category_right wow fadeInDown">
+              <ul class="small_catg">
+              {% for news_ in news_3_2|slice:":3" %}
+                <li>
+                  <div class="media wow fadeInDown"> <a class="media-left" href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank"><img src="{{ news_.pic }}" alt=""></a>
+                    <div class="media-body">
+                      <h4 class="media-heading"><a href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank">{{ news_.title }} </a></h4>
+                      <div class="comments_box"> <span class="meta_date">{{ news_.time }}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                    </div>
+                  </div>
+                </li>
+              {% endfor %}
+              </ul>
+            </div>
+          </div>
+          
+          <div class="technology_catrarea">
+            <div class="single_category">
+              <h2> <span class="bold_line"><span></span></span> <span class="solid_line"></span> <a class="title_text" href="#">{{channel_list.3}}</a> </h2>
+              <div class="business_category_left">
+                <ul class="fashion_catgnav wow fadeInDown">
+                {% for news_ in news_4_1|slice:":1" %}
+                  <li>
+                    <div class="catgimg2_container"> <a href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank"><img alt="" src="{{ news_.pic }}"></a> </div>
+                    <h2 class="catg_titile"><a href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank">{{ news_.title }}</a></h2>
+                    <div class="comments_box"> <span class="meta_date">{{ news_.time }}</span> <span class="meta_comment"><a href="#">No Comments</a></span> <span class="meta_more"><a  href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank">Read More...</a></span> </div>
+                    <p>{{ news_.src }}</p>
+                  </li>
+                {% endfor %}  
+                </ul>
+              </div>
+              <div class="business_category_right">
+                <ul class="small_catg wow fadeInDown">
+                {% for news_ in news_4_2|slice:":3" %}
+                  <li>
+                    <div class="media wow fadeInDown"> <a class="media-left" href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank"><img src="{{ news_.pic }}" alt=""></a>
+                      <div class="media-body">
+                        <h4 class="media-heading"><a href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank">{{ news_.title }} </a></h4>
+                        <div class="comments_box"> <span class="meta_date">{{ news_.time }}</span> <span class="meta_comment"><a href="#">No Comments</a></span> </div>
+                      </div>
+                    </div>
+                  </li>
+                {% endfor %}  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <div class="content_bottom_right">
+          <div class="single_bottom_rightbar">
+            <h2>{{channel_list.4}}</h2>
+            <ul class="small_catg popular_catg wow fadeInDown">
+            {% for news_ in news_5_1 %}
+              <li>
+                <div class="media wow fadeInDown"> <a href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank" class="media-left"><img alt="" src="{{ news_.pic }}"> </a>
+                  <div class="media-body">
+                    <h4 class="media-heading"><a href="{% url 'record_history' %}/?next={{news_.weburl}}" target="_blank">{{ news_.title }} </a></h4>
+                    <p>{{ news_.src }}</p>
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+          <div class="single_bottom_rightbar wow fadeInDown">
+            <h2>Popular Lnks</h2>
+            <ul>
+              <li><a href="https://daily.zhihu.com/">知乎日报</a></li>
+              <li><a href="http://news.qq.com/">腾讯新闻</a></li>
+              <li><a href="http://news.sina.com.cn/">新浪新闻</a></li>
+              <li><a href="http://news.163.com/">网易新闻</a></li>
+              <li><a href="http://news.ifeng.com/">凤凰新闻</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="{% static 'js/jquery.min.js' %}"></script> 
+<script src="{% static 'js/bootstrap.min.js' %}"></script> 
+<script src="{% static 'js/wow.min.js' %}"></script> 
+<script src="{% static 'js/slick.min.js' %}"></script> 
+<script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
+
+
+{% endblock %}

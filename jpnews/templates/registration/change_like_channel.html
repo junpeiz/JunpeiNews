@@ -1,0 +1,30 @@
+{% extends 'news/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+  <h2>Change Preffered News categories</h2>
+  <form method="post">
+    {% csrf_token %}
+      {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="display: none">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+      {% endfor %}
+
+    <button type="submit">Submit</button>
+  </form>
+
+{% else %}
+<p> You have not been authenticated, please <a href="{% url 'login' %}"> login </a></p>
+{% endif %}
+
+{% endblock %}
